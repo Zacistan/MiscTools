@@ -1,0 +1,10 @@
+server {
+	listen 80
+	server_name __proxy_hostname__;
+
+	location / {
+    	proxy_set_header Host $host;
+    	proxy_set_header X-Real-IP $remote_addr;
+    	proxy_pass __proxied_service_url__;
+	}
+}
